@@ -1,2 +1,2 @@
-mysql/
 mysql/*.sock
+*.sock

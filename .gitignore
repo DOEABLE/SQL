@@ -1,5 +1,8 @@
 mysql/*.sock
 *.sock
+*#innodb_redo*
+*#innodb_temp*
+*#ib_16384*
 # Database files
 *.mdf
 *.ldf
@@ -24,6 +27,7 @@ mysql/*.sock
 
 # MySQL specific files
 *.ibd
+*.ibt
 *.frm
 *.MYD
 *.MYI

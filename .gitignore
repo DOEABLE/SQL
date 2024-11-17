@@ -3,6 +3,10 @@ mysql/*.sock
 *#innodb_redo*
 *#innodb_temp*
 *#ib_16384*
+*.pem
+*ib*
+*tmp*
+undo*
 # Database files
 *.mdf
 *.ldf

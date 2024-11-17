@@ -1,2 +1,45 @@
 mysql/*.sock
 *.sock
+# Database files
+*.mdf
+*.ldf
+*.ndf
+
+# Backup files
+*.bak
+*.dbak
+*.sql.gz
+
+# Log files
+*.log
+*.trc
+
+# Temporary files
+*.tmp
+*.temp
+
+# Binary log files
+*binlog*
+*.bin
+
+# MySQL specific files
+*.ibd
+*.frm
+*.MYD
+*.MYI
+*.sdi
+
+# SQL Server specific files
+*.mdf
+*.ldf
+*.ndf
+
+# Configuration files
+*.cnf
+*.ini
+
+# IDE files
+.idea/
+.vscode/
+*.suo
+*.user

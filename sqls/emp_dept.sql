@@ -3,6 +3,30 @@ USE testdb;
 show tables;
 SELECT User, Host FROM mysql.user;
 SELECT User, Host FROM mysql.user;
+select * from Dept;
+select * from Emp;
+
+-- Dept테이블에 이름이 가장 빠른 직원을 captain으로 update 하시오.
+	-- 부서별 이름이 가장 빠른 직원
+    select dept, min(ename), min(id) from Emp group by id, dept;
+select ename
+from Emp where is_captain =1;
+
+-- self join(best)
+select e1.*,e2.id
+FROM Emp e1 left join Emp e2 ON e1.dept = e2.dept and e1.ename > e2.ename
+where e2.id is null;
+
+ -- 위 쿼리를 이용해서 update
+ select d.*,e.* from Dept d
+ -- update Dept d SET d.captain = e.id
+ INNER JOIN 
+	(select e1.dept, e1.id 
+		FROM Emp e1 left join Emp e2 ON e1.dept = e2.dept and e1.ename > e2.ename)e
+ON d.id=e.dept;
+
+ 
+
 -- update
     WITH RankedEmployees AS (
     SELECT 
@@ -26,9 +50,23 @@ ADD COLUMN outdt DATE COMMENT '퇴사일';
 alter table Emp 
 ADD COLUMN auth tinyint(1) not null default 9 comment '권한(0:sys, 1:super,...,9:guest)' after dept;
 
-select *
-	from Emp e inner join Dept d on e.dept = d.id
-	where e.dept in (3,4);
+-- p.46 퇴사일 컬럼추가하고 퇴사처리하기
+update Emp set outdt='2024-04-25' where id in (3,5);
+
+update Emp set outdt=curdate() where id in (14,26);
+
+SET SQL_SAFE_UPDATES = 0;
+update Dept d inner join Emp e on d.captain = e.id
+	set d.captain = null
+    where e.outdt is not null;
+SET SQL_SAFE_UPDATES = 1;    
+
+-- 위 결과 확인
+select * FROM Dept d left join Emp e on d.captain = e.id;
+
+select *, curdate(),curtime(), now() from Emp where id in (3,5,10,14,26);
+
+select * from Emp e inner join Dept d on e.dept = d.id where e.dept in (3,4);
     
 UPDATE Emp e
 INNER JOIN Dept d ON e.dept = d.id

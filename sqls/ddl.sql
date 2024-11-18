@@ -2,7 +2,7 @@ show processlist;
 SHOW databases;
 USE testdb;
 SHOW TABLES;
-show index from Dept;
+show index from Student;
 
 create table Prof(
 	id smallint unsigned not null auto_increment comment '교수번호',
@@ -28,12 +28,12 @@ alter table Subject add constraint unique key uniq_Subject_name(name);
 show index from Subject;
 
 create table Enroll(
-	id mediumint unsigned not null auto_increment primary key comment '수강신청코드',
+	id mediumint unsigned not null auto_increment PRIMARY key comment '수강신청코드',
     createdate timestamp DEFAULT CURRENT_TIMESTAMP COMMENT '신청일시',
     updatedate timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
 	subject smallint unsigned not null comment '과목번호',
     student int unsigned not null comment '학번',
-    PRIMARY KEY(id),
+    -- PRIMARY KEY(id),
     constraint Foreign Key fk_Enroll_subject_Subject(subject)
 					References Subject(id) on delete cascade on Update cascade,
 	constraint Foreign Key fk_Enroll_student_Student(student)

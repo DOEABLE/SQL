@@ -1,6 +1,6 @@
-mysql/*.sock
+#mysql/*.sock
 mysql/
-*.sock
+#*.sock
 *#innodb_redo*
 *#innodb_temp*
 *#ib_16384*
@@ -46,8 +46,8 @@ undo*
 *.ndf
 
 # Configuration files
-*.cnf
-*.ini
+#*.cnf
+#*.ini
 
 # IDE files
 .idea/

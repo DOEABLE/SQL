@@ -1,6 +1,6 @@
-#mysql/*.sock
+mysql/*.sock
 mysql/
-#*.sock
+*.sock
 *#innodb_redo*
 *#innodb_temp*
 *#ib_16384*

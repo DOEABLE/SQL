@@ -45,9 +45,12 @@ select * from Student ORDER BY rand();
 select major, count(*) cnt from Student where id>0 group by major HAVING cnt >1 ;
 
 select max(major),min(birthdt) from Student;
-
+select * FROM STUDENT;
+select * FROM MAJOR;
 select * FROM Student INNER JOIN Major ON Student.major = Major.id where Student.id>=2;
-select * FROM Student s left outer join Major m on s.major = m.id where s.id>=2;
+
+select * FROM Student s left outer join Major m on s.major = m.id;
+-- UNION
 select * FROM Student s right outer join Major m on s.major = m.id;
 
 select * from Major where id<=3

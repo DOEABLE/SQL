@@ -13,6 +13,7 @@ services:
       - --log_bin_trust_function_creators=1
     volumes:
       - ./mysql:/var/lib/mysql
+      # - /d/docker/database/mysql:/var/lib/mysql
 
   # firstProjectdb:
   #   container_name: KeywordHanarodb

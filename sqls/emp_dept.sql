@@ -8,7 +8,7 @@ select * from Emp;
 
 -- Dept테이블에 이름이 가장 빠른 직원을 captain으로 update 하시오.
 	-- 부서별 이름이 가장 빠른 직원
-    select dept, min(ename), min(id) from Emp group by id, dept;
+    select dept, min(ename) as fast_name, id from Emp group by dept,id;
 select ename
 from Emp where is_captain =1;
 
@@ -68,17 +68,14 @@ select *, curdate(),curtime(), now() from Emp where id in (3,5,10,14,26);
 
 select * from Emp e inner join Dept d on e.dept = d.id where e.dept in (3,4);
     
-UPDATE Emp e
+update Emp e
 INNER JOIN Dept d ON e.dept = d.id
 SET d.captain = e.id
-WHERE e.dept = 3 AND e.name = '김나라';
+WHERE e.dept = 3 AND e.ename = '김나라';
 
--- select d.id as dept, d.dname, e.id, e.ename, d.captain from
-UPDATE Emp e 
-inner join Dept d on e.dept = d.id 
-	set d.captain = e.id
-	where e.dept=3 and e.name='김나라';
-    
+select * from Emp e inner join dept d on e.dept = d.id
+where e.dept=3;
+
 CREATE TABLE EmailLog(
 id int unsigned not null auto_increment,
 sender int unsigned not null comment '발신자 id',

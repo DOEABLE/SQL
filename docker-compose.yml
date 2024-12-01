@@ -5,6 +5,7 @@ services:
     ports:
       - 3309:3306
     environment:
+      TZ: Asia/Seoul
       MYSQL_ROOT_PASSWORD: TestdbRoot
       MYSQL_DATABASE: testdb
     command:

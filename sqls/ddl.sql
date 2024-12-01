@@ -2,7 +2,20 @@ show processlist;
 SHOW databases;
 USE testdb;
 SHOW TABLES;
-show index from Student;
+show index from Prof;
+desc Prof;
+insert into Prof(name) values ("김교수");
+insert into Prof(name) values ("홍교수");
+insert into Prof(name) values ("박교수");
+insert into Prof(name) values ("윤교수");
+
+insert into Subject(name, prof)
+	select concat(p.name,'과목'),p.id from Prof p;
+select * from Subject;
+
+SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, COLUMN_DEFAULT
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME='Subject';
 
 create table Prof(
 	id smallint unsigned not null auto_increment comment '교수번호',
@@ -26,28 +39,49 @@ create table Subject(
 
 alter table Subject add constraint unique key uniq_Subject_name(name);
 show index from Subject;
-
+-- 수강신청table
 create table Enroll(
 	id mediumint unsigned not null auto_increment PRIMARY key comment '수강신청코드',
     createdate timestamp DEFAULT CURRENT_TIMESTAMP COMMENT '신청일시',
     updatedate timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
 	subject smallint unsigned not null comment '과목번호',
-    student int unsigned not null comment '학번',
+    student mediumint unsigned not null comment '학번',
     -- PRIMARY KEY(id),
     constraint Foreign Key fk_Enroll_subject_Subject(subject)
 					References Subject(id) on delete cascade on Update cascade,
 	constraint Foreign Key fk_Enroll_student_Student(student)
 					References Student(id) on delete cascade on Update cascade
 );
+-- 테이블의 데이터 타입 확인
+show columns from student;
+show columns from Enroll;
+
+insert into Enroll(subject,student) values(1,1),(2,2),(9,3),(4,4),(8,1);
+desc enroll;
+desc Student;
+select * from Enroll;
+select * from subject; -- 1,2,3,4,8,9
+select * from student; -- 1,2,3,4
+
+select e.*, sub.name as subjectName
+	from Enroll e inner join Subject sub on e.subject = sub.id;
+
+select e.*, sub.name as subjectName, stu.name
+	from Enroll e inner join Subject sub on e.subject = sub.id
+				inner join Student stu on e.student = stu.id;
+                
+select e.*, sub.name as subjectName, stu.name, stu.major as major_id, m.name as majorName
+	from Enroll e inner join Subject sub on e.subject = sub.id
+				inner join Student stu on e.student = stu.id
+                left outer join Major m on stu.major =m.id;
+	
+
 
 -- drop table Enroll;
 ALTER TABLE STUDENT MODIFY COLUMN NAME VARCHAR(25) NOT NULL DEFAULT '' COMMENT '학생명';
 ALTER TABLE STUDENT MODIFY COLUMN major tinyint unsigned null comment '학과코드';   
 ALTER TABLE STUDENT add constraint foreign key fk_Student_major_Major(major)
 								references Major(id) on DELETE set null on UPDATE CASCADE;
-    
-    
-    desc Student;
     
 CREATE TABLE Major(
     id tinyint unsigned not null auto_increment primary key comment '학과코드',
@@ -68,7 +102,12 @@ CREATE TABLE Student (
     UNIQUE KEY uniq_Student_email(email),-- unique column은 모아놓으면 where조건 걸때 유리함.
     UNIQUE KEY uniq_Student_name_mobile(name,mobile)
     );
-select * from Major;
+-- serve query
+select s.*, m.name
+	from Student s left join Major m on s.major = m.id;
+select s.*, m.name
+	from Student s inner join Major m on s.major =m.id
+    where m.id<=3;
 
 
 

@@ -37,5 +37,9 @@ select dayofweek('2024-11-16'), dayofweek('2024-11-17'); -- 일요일: 1~ 토요
 
 -- view
 select * from v.emp_dept;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+ALTER USER 'root'@'%' IDENTIFIED BY 'TestdbRoot';
+flush PRIVILEGES;
+
 
 

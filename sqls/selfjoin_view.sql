@@ -146,23 +146,24 @@ SELECT
 FROM Emp
 GROUP BY Dept;
 -- 3. 위의 두 테이블 결함해 최고연봉자와 부서 평균 연봉을 동시에 출력
-select
-	e.dept,
-    avg_s.avg_salary AS '부서평균연봉',
-    max_s.max_salary AS '최고연봉',
-    COUNT(e.id) AS '최고연봉인원',
+SELECT e.dept,
+	avg_s.avg_salary as '부서평균연봉',
+    max_s.max_salary as '최고연봉',
+    count(e.id) as '최고연봉인원',
     group_concat(e.ename)
-FROM emp e
-	INNER JOIN dept d on e.dept=d.id
-    INNER JOIN DeptMaxSalaries max_s on e.dept = max_s.dept and e.salary = max_s.max_salary
-    INNER JOIN DeptAvgSalaries avg_s on e.dept = avg_s.dept
-where
-	avg_s.avg_salary > (select avg(salary) from emp)	-- 전체 평균보다 높은 부서만
-group by
-	e.dept, avg_s.avg_salary, max_s.max_salary;
-    
-select * from dept;
-select * from Emp;
+FROM Emp e
+	inner join Dept d on e.dept = d.id
+    inner join DeptAvgSalaries avg_s on e.dept = avg_s.dept
+    inner join DeptMaxSalaries max_s on e.dept = max_s.dept and e.salary = max_s.max_salary --    
+where avg_s.avg_salary > (select avg(salary) from Emp)
+group by e.dept;
+
+select e.dept, count(e.id), avg(e.salary)
+from emp e
+	inner join DeptAvgSalaries as avg_s on e.dept = avg_s.dept and e.salary = avg_s.avg_salary
+group by e.dept;
+
+select * from DeptAvgSalaries;
 -- db의 모든 테이블, 뷰확인
 SHOW FULL TABLES;
  WHERE Table_type ='VIEW';

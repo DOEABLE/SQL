@@ -12,7 +12,8 @@ insert into Prof(name) values ("윤교수");
 insert into Subject(name, prof)
 	select concat(p.name,'과목'),p.id from Prof p;
 select * from Subject;
-
+select * from Prof;
+delete from Subject where id=1;
 SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, COLUMN_DEFAULT
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME='Subject';
@@ -55,13 +56,16 @@ create table Enroll(
 -- 테이블의 데이터 타입 확인
 show columns from student;
 show columns from Enroll;
-
+select * from student;
+truncate table student;
 insert into Enroll(subject,student) values(1,1),(2,2),(9,3),(4,4),(8,1);
 desc enroll;
 desc Student;
 select * from Enroll;
-select * from subject; -- 1,2,3,4,8,9
-select * from student; -- 1,2,3,4
+select * from subject; -- 6,7,8,9
+select * from student; -- 4,5,10,11
+-- legion com
+insert into Enroll(subject,student) values(6,4),(7,5),(8,10),(9,11);
 
 select e.*, sub.name as subjectName
 	from Enroll e inner join Subject sub on e.subject = sub.id;
@@ -82,7 +86,7 @@ ALTER TABLE STUDENT MODIFY COLUMN NAME VARCHAR(25) NOT NULL DEFAULT '' COMMENT '
 ALTER TABLE STUDENT MODIFY COLUMN major tinyint unsigned null comment '학과코드';   
 ALTER TABLE STUDENT add constraint foreign key fk_Student_major_Major(major)
 								references Major(id) on DELETE set null on UPDATE CASCADE;
-    
+    select * from Major;
 CREATE TABLE Major(
     id tinyint unsigned not null auto_increment primary key comment '학과코드',
     name varchar(20) not null comment '학과명'

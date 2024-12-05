@@ -1,4 +1,5 @@
 #mysql/*.sock
+#.yml
 mysql/
 #*.sock
 #*#innodb_redo*

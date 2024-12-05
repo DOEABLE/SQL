@@ -1,5 +1,5 @@
 #mysql/*.sock
-#.yml
+.yml
 mysql/
 #*.sock
 #*#innodb_redo*
@@ -31,16 +31,16 @@ mysql/
 *.trc
 
 # Temporary files
-#*.tmp
-#*.temp
+*.tmp
+*.temp
 
 # Binary log files
-#*binlog*
-#*.bin
+*binlog*
+*.bin
 
 # MySQL specific files
 #*.ibd
-#*.ibt
+*.ibt
 #*.frm
 #*.MYD
 #*.MYI

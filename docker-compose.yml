@@ -1,23 +1,24 @@
 services:
-  # dockerTest:
-  #   container_name: dockerTest
-  #   image: mysql:8.0
-  #   ports:
-  #     - 3309:3306
-  #     # - 3306:3306
-  #   environment:
-  #     TZ: Asia/Seoul
-  #     MYSQL_ROOT_PASSWORD: TestdbRoot
-  #     MYSQL_DATABASE: testdb
-  #   command:
-  #     - --character-set-server=utf8mb4
-  #     - --collation-server=utf8mb4_unicode_ci
-  #     - --log_bin_trust_function_creators=1
-  #   volumes:
-  #     - ./mysql:/var/lib/mysql
-  #     # - /d/docker/database/mysql:/var/lib/mysql
-  #     #- /d/docker/database/mysql:/var/lib/mysql
-  #     # - ./mysql:/var/lib/mysql
+  examdb:
+    container_name: examdb
+    image: mysql:8.0
+    ports:
+      - 3309:3306
+      # - 3306:3306
+    environment:
+      TZ: Asia/Seoul
+      MYSQL_ROOT_PASSWORD: tiger
+      MYSQL_DATABASE: assignmentdb
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --log_bin_trust_function_creators=1
+    volumes:
+      - ./examdb:/var/lib/mysql
+      # - ./mysql:/var/lib/mysql
+      # - /d/docker/database/mysql:/var/lib/mysql
+      #- /d/docker/database/mysql:/var/lib/mysql
+      # - ./mysql:/var/lib/mysql
 
   localdb:
     container_name: hana4db

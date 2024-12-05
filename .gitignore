@@ -1,22 +1,22 @@
 #mysql/*.sock
-mysql/
-#*.sock
-*#innodb_redo*
-*#innodb_temp*
-*#ib_16384*
-*.pem
-*ib*
-*tmp*
-undo*
+#mysql/
+*.sock
+#*#innodb_redo*
+#*#innodb_temp*
+#*#ib_16384*
+#*.pem
+#*ib*
+#*tmp*
+#undo*
 # Diagram files
-*.mwb
+#*.mwb
 # Database files
-*.mdf
-*.ldf
-*.ndf
+#*.mdf
+#*.ldf
+#*.ndf
 
 # Backup files
-*.bak
+#*.bak
 *.dbak
 *.sql.gz
 
@@ -25,25 +25,25 @@ undo*
 *.trc
 
 # Temporary files
-*.tmp
-*.temp
+#*.tmp
+#*.temp
 
 # Binary log files
-*binlog*
-*.bin
+#*binlog*
+#*.bin
 
 # MySQL specific files
-*.ibd
-*.ibt
-*.frm
-*.MYD
-*.MYI
-*.sdi
+#*.ibd
+#*.ibt
+#*.frm
+#*.MYD
+#*.MYI
+#*.sdi
 
 # SQL Server specific files
-*.mdf
-*.ldf
-*.ndf
+#*.mdf
+#*.ldf
+#*.ndf
 
 # Configuration files
 #*.cnf

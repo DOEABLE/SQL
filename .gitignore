@@ -1,23 +1,34 @@
 #mysql/*.sock
+<<<<<<< HEAD
 mysql/
 #*.sock
 #*#innodb_redo*
 #*#innodb_temp*
 #ib_16384*
+=======
+#mysql/
+*.sock
+#*#innodb_redo*
+#*#innodb_temp*
+#*#ib_16384*
+>>>>>>> origin/develop
 #*.pem
 #*ib*
 #*tmp*
 #undo*
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
 # Diagram files
 #*.mwb
 # Database files
-*.mdf
-*.ldf
-*.ndf
+#*.mdf
+#*.ldf
+#*.ndf
 
 # Backup files
-*.bak
+#*.bak
 *.dbak
 *.sql.gz
 

@@ -13,8 +13,8 @@ services:
       - --collation-server=utf8mb4_unicode_ci
       - --log_bin_trust_function_creators=1
     volumes:
-      # - ./mysql:/var/lib/mysql
-      - /d/docker/database/mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
+      # - /d/docker/database/mysql:/var/lib/mysql
 
   examdb: #과제db
     container_name: examdb

@@ -2,18 +2,15 @@
 .yml
 mysql/
 #*.sock
-#*#innodb_redo*
-#*#innodb_temp*
-#ib_16384*
+/#innodb_redo*
+/#innodb_temp*
+/ib_16384*
 #mysql/
 *.sock
-#*#innodb_redo*
-#*#innodb_temp*
-#*#ib_16384*
 #*.pem
 #*ib*
 #*tmp*
-#undo*
+undo*
 # Diagram files
 #*.mwb
 # Database files
